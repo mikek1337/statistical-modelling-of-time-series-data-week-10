@@ -2,6 +2,7 @@ import pandas as pd
 from statsmodels.tsa.stattools import kpss
 from statsmodels.tsa.seasonal import seasonal_decompose
 import matplotlib.pyplot as plt
+import pymc as pm
 
 def kpss_test(timeseries:pd.DataFrame)->bool:
     """
@@ -49,4 +50,8 @@ def plot_trends_seasonal(timeseries:pd.DataFrame)->None:
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
 
+def get_switchpt(price):
+    with pm.Model() as change_point_model:
+        
+        return 
 

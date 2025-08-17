@@ -1,0 +1,7 @@
+@import "tailwindcss";
+body{
+    background-color: var(--color-zinc-200);
+}
+.my-progress {
+  background-color: var(--color-zinc-200) !important;
+}
