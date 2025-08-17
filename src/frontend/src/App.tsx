@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <div className="max-w-[80%] mx-auto my-2 bg-zinc-300 text-zinc-600 p-10">
+      <div className="max-w-[80%] mx-auto my-2 bg-zinc-100 text-zinc-600 p-10">
         <div className="mx-auto text-center">
           <h1 className="font-bold text-5xl text-zinc-600">Brent Oil Price Analysis Dashboard</h1>
           <p className="text-gray-500 font-semibold">insight from Bayesain Change Point Detection and Time series analysis</p>

@@ -35,7 +35,7 @@ const OilPriceOverTime: FC<OilPriceOverTimeProps> = ({ startDate, endDate }) => 
     const chartRef = useRef(null)
 
     return (
-        <div className="max-w-full">
+        <div className="max-w-full bg-zinc-200">
             {
                 isLoading && <Loading />
             }

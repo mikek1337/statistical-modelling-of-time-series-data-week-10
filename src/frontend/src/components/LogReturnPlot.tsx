@@ -27,12 +27,12 @@ const LogReturnPlot:FC<LogReturnPlotProps> = ({startDate, endDate}) => {
     },[startDate, endDate])
 
     return (
-        <div>
+        <div className="bg-zinc-200">
             {
                 isLoading && <Loading />
             }
             {
-                data?.length > 0 && <Line redraw={true} options={{ plugins: { legend: { position: 'top' }, title: { display: true, text: "Log Return Over Time", font: { size: 25, weight: 'bold' } } } }} data={{ datasets: [{ data: data.map((d) => d.log_return),backgroundColor:'rgba(75, 192, 192, 0.6)', label: "Log return" }], labels: data.map((d) => d.date) }} ref={chartRef} />
+                data?.length > 0 && <Line redraw={true} options={{ plugins: { legend: { position: 'top' }, title: { display: true, text: "Return Over Time", font: { size: 25, weight: 'bold' } } } }} data={{ datasets: [{ data: data.map((d) => d.log_return),backgroundColor:'rgba(75, 192, 192, 0.6)',  label: "Log return" }], labels: data.map((d) => d.date) }} ref={chartRef} />
             }
         </div>
     )

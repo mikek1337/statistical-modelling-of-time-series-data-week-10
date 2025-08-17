@@ -13,7 +13,7 @@ const ChangePointSummary = ()=>{
             {
                 isLoading && <Loading/>
             }
-            <div className="rounded-md   flex flex-col p-5  bg-zinc-400 cursor-pointer">
+            <div className="rounded-md   flex flex-col p-5  bg-zinc-200 cursor-pointer">
                 <span className="font-semibold">Change Point Detected:</span>
                 <span>Date: {new Date(data?.change_point_date).toDateString()}</span>
                 <span>HPD Start Date: {data?.hpd_start_date}</span>
