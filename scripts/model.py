@@ -20,7 +20,7 @@ def create_log_return():
     return log_return
 
 def return_oli_data():
-    return oil_prices_data['Price']
+    return alt_price_data
 
 def return_log_return():
     return log_returns_data
@@ -34,12 +34,15 @@ def return_impact_probabilities():
     return impact_probabilities_data
 
 def run_analysis():
-    global oil_prices_data, log_returns_data, change_point_results
+    global oil_prices_data,alt_price_data, log_returns_data, change_point_results, log_return_data
     global posterior_means_data, posterior_sds_data, impact_probabilities_data, trace_volatility
     oil_prices_data = load('BrentOilPrices.csv')
     oil_prices_data['Date'] = pd.to_datetime(oil_prices_data['Date'], format="mixed")
+    alt_price_data = oil_prices_data.copy(deep=True)
     oil_prices_data.set_index('Date', inplace=True)
     log_returns_data  = create_log_return()
+    log_return_data = alt_price_data
+     
 
     log_return = log_returns_data.values
     with pm.Model() as pmModel:
@@ -67,7 +70,9 @@ def run_analysis():
         'tau_post_index': tau_post,
         'change_point_date': change_point_date,
         'hpd_start_date': hpd_start_date,
-        'hpd_end_date': hpd_end_date
+        'hpd_end_date': hpd_end_date,
+        'event_name': None,
+        'event_type': None
     }
     posterior_means_data = {
         'mean_1': trace_volatility.posterior['mean_1'].mean().item(),
@@ -86,6 +91,19 @@ def run_analysis():
         'prob_mean_increase': prob_mean_increase,
         'prob_sd_increase': prob_sd_increase
     }
+
+def map_events():
+    events = load('events.csv')
+    hpd_start = change_point_results['hpd_start_date']
+    hdp_end = change_point_results['hpd_end_date']
+    if change_point_results != None:
+        filter_event = events[(hpd_start <=  events['Approximate_Start_Date']) & (hdp_end > events['Approximate_Start_Date'])]
+        print(hpd_start)
+        print(hdp_end)
+        print(filter_event)
+        # change_point_results['event_name'] = filter_event['Event_Name'  ]
+        # change_point_results['event_type'] = filter_event['Event_Type']
+
 
 if __name__ == "__main__":
     run_analysis()
