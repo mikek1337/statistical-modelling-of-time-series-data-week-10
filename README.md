@@ -22,3 +22,28 @@ python3 -m venv .venv
 ```
 pip install -r requirements.txt
 ```
+
+
+```
+python3 src/backend/app.py
+```
+
+open another terminal
+
+```
+cd src/frontend/
+```
+
+```
+npm install or pnpm install
+```
+
+```
+npm run dev or pnpm run dev
+```
+
+goto browser 
+
+```
+http://localhost:5173
+```
