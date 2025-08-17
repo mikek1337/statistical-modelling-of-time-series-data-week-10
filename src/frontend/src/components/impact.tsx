@@ -6,7 +6,7 @@ import Loading from "./Loading"
 const Impact = ()=>{
     const{isLoading, data} = useFetch<ImpactProbType>('impact_probabilities')
     return(
-        <div className="opacity-0 z-10  group-hover:opacity-70 transition-opacity ease-in-out duration-150 flex items-center gap-2  absolute bg-zinc-300   rounded-md w-full md:top-[10%] top-0 p-5 text-zinc-800   md:left-full ">
+        <div className="opacity-0 z-10  group-hover:opacity-70 transition-all ease-in-out duration-150 flex items-center gap-2  absolute bg-zinc-300   rounded-md w-full md:top-[10%] top-0 p-5 text-zinc-800   group-hover:md:left-full ">
             {
                 isLoading && <Loading/>
             }
