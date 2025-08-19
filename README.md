@@ -47,3 +47,5 @@ goto browser
 ```
 http://localhost:5173
 ```
+
+![demo screenshot](Screenshot_20250819_215945.png)

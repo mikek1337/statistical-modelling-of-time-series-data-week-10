@@ -49,8 +49,8 @@ function App() {
           }} ref={chartRef}/>} */}
           <OilPriceOverTime startDate={startDate} endDate={endDate}/>
           <LogReturnPlot startDate={startDate} endDate={endDate}/>
-          <ChangePointSummary/>
         </div>
+          <ChangePointSummary/>
       </div>
    </>
   )

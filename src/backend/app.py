@@ -4,6 +4,7 @@ import pandas as pd
 sys.path.append('scripts')
 from model import map_events, run_analysis, return_change_point, return_oli_data, return_log_return, return_posterior_mean_data, return_posterior_sds, return_impact_probabilities
 from flask_cors import CORS
+from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 run_analysis()
@@ -98,9 +99,13 @@ def get_impact_probabilities():
         return jsonify(impact_probabilities_data)
     return jsonify({"error": "Impact probabilities not available"}), 500
 
-@app.route('/api/checkpointsummary')
+@app.route('/api/checkpointsummary', methods=['GET'])
 def get_events():
-    return jsonify(map_events()), 200
+    change_point_date = request.args.get('changepointdate')
+    # if isinstance(change_point_date, str):
+    #     newDate = datetime.strptime(change_point_date, "%Y-%m-%d")
+    #     return jsonify(map_events(newDate)), 200
+    return jsonify(map_events(change_point_date)), 200
     
 
 @app.route('/', methods=['GET'])
